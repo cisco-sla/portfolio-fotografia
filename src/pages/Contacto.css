@@ -6,8 +6,18 @@
   margin-bottom: 1.5rem;
 }
 
-@media (max-width: 600px) {
+.contacto__columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 800px) {
   .contacto {
     padding: 1.5rem 1rem;
+  }
+
+  .contacto__columnas {
+    grid-template-columns: 1fr;
   }
 }

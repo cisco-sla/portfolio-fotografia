@@ -1,0 +1,22 @@
+.mapa {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mapa__titulo {
+  font-size: 2rem;
+  color: var(--color-texto-claro);
+}
+
+.mapa__iframe {
+  flex: 1;
+  width: 100%;
+  min-height: 22rem;
+  border: 0;
+  border-radius: 1rem;
+}
+
+.mapa__enlace {
+  color: var(--color-acento);
+}
