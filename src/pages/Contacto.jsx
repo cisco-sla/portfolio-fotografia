@@ -1,8 +1,11 @@
+import Contact from "../components/Contact.jsx";
+import "./Contacto.css";
+
 function Contacto() {
   return (
-    <main>
+    <main className="contacto">
       <h1>Contacto</h1>
-      <p>Formulario de contacto y mapa</p>
+      <Contact />
     </main>
   );
 }

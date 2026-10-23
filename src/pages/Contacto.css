@@ -1,0 +1,13 @@
+.contacto {
+  padding: 2rem 4rem;
+}
+
+.contacto h1 {
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .contacto {
+    padding: 1.5rem 1rem;
+  }
+}
