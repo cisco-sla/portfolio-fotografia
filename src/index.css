@@ -60,6 +60,7 @@
 body {
   font-family: var(--fuente-texto);
   background: var(--color-fondo-oscuro);
+  color: var(--color-texto-claro);
 }
 
 h1,

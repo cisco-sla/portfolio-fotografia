@@ -1,0 +1,51 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4rem;
+  background: var(--color-primario);
+}
+
+.navbar__lista {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.navbar a {
+  color: var(--color-texto-claro);
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+
+.navbar a:hover {
+  color: var(--color-acento);
+}
+
+.navbar__inicio {
+  display: flex;
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+}
+
+/* NUEVO: el router agrega la clase "active" al enlace de la página actual */
+.navbar a.active {
+  color: var(--color-acento);
+  text-decoration: underline;
+}
+
+/* NUEVO: en pantallas angostas, menos relleno y menú debajo del nombre */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .navbar__lista {
+    gap: 1rem;
+  }
+}
