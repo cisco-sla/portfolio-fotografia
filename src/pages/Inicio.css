@@ -7,6 +7,10 @@
   opacity: 0.85;
 }
 
+.inicio h2 {
+  margin-bottom: 1rem;
+}
+
 .inicio__galeria {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import FotoCard from "../components/FotoCard.jsx";
 import "./Inicio.css";
 
-const URL_API = "https://picsum.photos/v2/list?page=1&limit=9";
+const URL_API = "https://picsum.photos/v2/list?page=4&limit=9";
 
 function Inicio() {
   const [fotos, setFotos] = useState([]);
