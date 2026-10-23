@@ -1,0 +1,35 @@
+.foto-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--color-tarjeta);
+}
+
+.foto-card__imagen {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.foto-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.foto-card__titulo {
+  font-size: 1.25rem;
+}
+
+.foto-card__detalle {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.foto-card__enlace {
+  color: var(--color-acento);
+}

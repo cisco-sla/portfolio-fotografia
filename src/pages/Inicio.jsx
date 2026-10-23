@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import FotoCard from "../components/FotoCard.jsx";
+import "./Inicio.css";
 
 const URL_API = "https://picsum.photos/v2/list?page=1&limit=9";
 
@@ -26,16 +28,29 @@ function Inicio() {
   }, []);
 
   return (
-    <main>
+    <main className="inicio">
       <h1>Inicio</h1>
+      <p className="inicio__intro">
+        Inspirate con estas fotos pero atentos: La Fotografía es un camino de
+        ida.
+      </p>
+      <h2>Galería de Inspiración. Fuente: Lorem Picsum</h2>
       {estado === "cargando" && <p>Cargando fotos...</p>}
       {estado === "error" && (
         <p role="alert">No pude cargar las fotos. Probá de nuevo más tarde.</p>
       )}
       {estado === "exito" && (
-        <ul>
+        <ul className="inicio__galeria">
           {fotos.map((foto) => (
-            <li key={foto.id}>{foto.author}</li>
+            <li key={foto.id}>
+              <FotoCard
+                imagen={`https://picsum.photos/id/${foto.id}/600/400`}
+                alt={`Fotografía de ${foto.author}`}
+                titulo={foto.author}
+                detalle={`Original: ${foto.width} x ${foto.height} px`}
+                enlace={foto.url}
+              />
+            </li>
           ))}
         </ul>
       )}
@@ -44,3 +59,4 @@ function Inicio() {
 }
 
 export default Inicio;
+("");
