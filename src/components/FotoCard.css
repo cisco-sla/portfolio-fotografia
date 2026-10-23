@@ -14,6 +14,12 @@
   object-fit: cover;
 }
 
+/* Variante del Portfolio: la foto se ve completa, con su proporción real */
+.foto-card--natural .foto-card__imagen {
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
 .foto-card__info {
   display: flex;
   flex-direction: column;

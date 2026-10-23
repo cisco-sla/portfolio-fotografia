@@ -1,0 +1,25 @@
+.portfolio {
+  padding: 2rem 4rem;
+}
+
+.portfolio__intro {
+  margin: 0.5rem 0 2rem;
+  opacity: 0.85;
+}
+
+.portfolio__galeria {
+  columns: 280px;
+  column-gap: 1.5rem;
+  list-style: none;
+}
+
+.portfolio__galeria li {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .portfolio {
+    padding: 1.5rem 1rem;
+  }
+}
