@@ -1,8 +1,12 @@
+/* Importo los hooks: useState para declarar la constante de estado para las fotos y el estado de carga; y el useEffect para la funcion cargarFotos para que haga el 
+fetch de la llamada a la API. Con un try/catch caapturo las respuestas y actualizo el estado de la carga. Se utiliza la API del sitio "Lorem Picsum" que es un 
+repositorio de fotografías - https://picsum.photos/ */
+
 import { useState, useEffect } from "react";
 import FotoCard from "../components/FotoCard.jsx";
 import "./Inicio.css";
 
-const URL_API = "https://picsum.photos/v2/list?page=4&limit=9";
+const URL_API = "https://picsum.photos/v2/list?page=4&limit=14";
 
 function Inicio() {
   const [fotos, setFotos] = useState([]);
@@ -26,6 +30,10 @@ function Inicio() {
 
     cargarFotos();
   }, []);
+
+  /* Acá se usa visualmente la constante estado. Por ejemplo: si el resultado es identico a cargando, muestra un parrafo "Cargando fotos..." Si es identico a error", 
+muestra el mensaje de error. Cuando el estado es "exito" mapeo el Array fotos y con una arrow function se arma la lista con el id de las fotos y le paso las props a 
+FotoCard*/
 
   return (
     <main className="inicio">

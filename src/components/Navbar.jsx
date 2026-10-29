@@ -1,12 +1,16 @@
 import { Link, NavLink } from "react-router";
 import "./Navbar.css";
 
-//Array con los objetos del menú: texto visible y ruta de cada página.
+// Array de objetos del menú: texto visible + la ruta de cada página.
 const enlaces = [
   { texto: "Inicio", destino: "/" },
   { texto: "Portfolio", destino: "/portfolio" },
   { texto: "Contacto", destino: "/contacto" },
 ];
+
+/* Se usa el componente Link para que en la imagen del logo, navegue hacia Inicio sin recargar todo el sitio. A su vez a la lista desordenada del Menú de navegación,
+le paso un map para el nombre y el destino del enlace. Agrgué el end={enlace.destino === "/"} porque todas las direcciones inician en la raiz "/", por lo tanto si
+hay coincidencia exacta con la pagina de Inicio que es la raiz, solo deja activa a esa pagina y no a las demas) */
 
 function Navbar() {
   return (

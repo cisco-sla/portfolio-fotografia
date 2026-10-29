@@ -1,47 +1,53 @@
+/*Archivo del formulario de Contacto. Importa los datos de la funcion de enviarConsulta (enviarConsulta.js) y crea la variable de datos iniciales, y 
+los mensajes de error a mostrar segun se den ciertas condiciones que están para validar los datos. 
+*/
 import { useState } from "react";
 import "./Contact.css";
 import { enviarConsulta } from "../services/enviarConsulta";
 
-/*Archivo de la sección de Contacto. Importa los datos de la funcion de enviarConsulta
-(enviarConsulta.js) y crea la variable de datos iniciales, y los mensajes de error 
-a mostrar segun se den ciertas condiciones que se ponen para validar los datos. 
-*/
 const datosIniciales = {
   nombre: "",
   email: "",
   mensaje: "",
 };
 
+/*Función para la validación: Primero desestructuramos "datos" (nombre, email y mensaje) Luego la constante errores que se "llena" si se cumplen las condiciones: En 
+nombre se pide que se ingresen al menos 3 letras. El trim saca los espacios en los extremos. En email se valida que se escriba un email correcto (no valida que el 
+mail exista, sino que se escriba "algo" - "@" - "algo" – "punto" – "algo". En mensaje se pide que al menos se escriban 10 caracteres. 
+*/
+
 function validar(datos) {
+  const { nombre, email, mensaje } = datos;
+
   const errores = {};
-  if (datos.nombre.trim().length < 2) {
+  if (nombre.trim().length < 3) {
     errores.nombre = "Escribí tu nombre.";
   }
-  if (!/^\S+@\S+\.\S+$/.test(datos.email)) {
+  if (!/^\S+@\S+\.\S+$/.test(email)) {
     errores.email = "Escribí un email válido.";
   }
-  if (datos.mensaje.trim().length < 10) {
+  if (mensaje.trim().length < 10) {
     errores.mensaje = "Contame tu consulta (mínimo 10 caracteres).";
   }
-
   return errores;
 }
 
 /*
-Función para declarar las 3 constantes con useState: 
-*datos (lo que el visitante escribe en todos los campos), 
-*errores: la validadcion de errores de la funcion anterior,
-*estado: estado del envio (enviando, exito, etc)  
+Componente funcional para que en la interfaz se trabaje con los datos, los errores y el estado con useState: 
+*datos (lo que el visitante escribe en todos los campos - arranca con los datosIniciales), 
+*errores: la validadcion de errores de la funcion anterior (arranca vacio), 
+*estado: estado del envio (enviando, exito, etc. - arranca en "inactivo").   
 */
+
 function Contact() {
   const [datos, setDatos] = useState(datosIniciales);
   const [errores, setErrores] = useState({});
   const [estado, setEstado] = useState("inactivo");
 
   /*
-Funciónes para los eventos (cambios y envio de mensaje) 
-Usamos desestructuración de las propiedades y el spread para copiar las propiedades 
-en un objeto nuevo y no modificar el estado original. 
+Esta es la función que monitorea los cambios en el formulario. Está vinculada con el onChange del return del formulario. Se desestructura “name” y “value” de datos
+para crear 2 variables (evento.target.name y evento.target.value y con setDatos y el spread creo un nuevo objeto (el original no se toca) y [name] se lo toma como 
+clave para que sirva para los 3 casos 
 */
 
   function manejarCambio(evento) {
@@ -49,13 +55,14 @@ en un objeto nuevo y no modificar el estado original.
     setDatos({ ...datos, [name]: value });
   }
 
-  async function manejarEnvio(evento) {
-    evento.preventDefault(); //previene recargar la página
+  /*funcion asincrona para el evento Envío. En la constante erroresEncontrados se guardan eventuales errores con su clave. Con un if, si encuentra 1 clave ( > 0) de
+error, el return trunca el envio. Caso contrario se envía la consulta y con el setEstado se cambia a “enviando”. Con el await (por eso está dentro del async) espera 
+la respuesta del server antes de seguir. Si hay error del lado del server, o de red, el catch lo atrapa y el setEstado cambia a “error". Si no hay error, el estado 
+pasa a “éxito”.
+*/
 
-    /*Se validan los datos. Si hay errrores corta la ejecucion. Si no
-hace la peticion de enviar los datos al server. Con un try/catch seteamos 
-que si tiene exito, actualiza datosIniciales con el state "exito". Caso cantrario
-captura el el error y setea el estado en "error.*/
+  async function manejarEnvio(evento) {
+    evento.preventDefault();
 
     const erroresEncontrados = validar(datos);
     setErrores(erroresEncontrados);
@@ -72,9 +79,6 @@ captura el el error y setea el estado en "error.*/
       setEstado("error");
     }
   }
-
-  /*Aca se define el formulario, con sus campos y el comportamiento, 
-ej. onSubmit: accion al presionar el boton > envía el mensaje. */
 
   return (
     <section className="contact">

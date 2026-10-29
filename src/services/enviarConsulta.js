@@ -1,13 +1,8 @@
 import { claveWeb3Forms } from "..//data/enlaces";
 
-/* Este archivo se crea para que capture datos del formulario y los 
-envío a Web3forms. Se declara la Url en una constante, se exporta
-una función enviarConsulta con los datos y la config (Post, tipo json)
-Al objeto de datos, key - valor se le pasa el stringify para convertirlo 
-en cadena de texto json y asi viaja hasta el servidor de Web3form. 
-Finalmente, la respuesta del server se guarda en una constante 
-para que envíe un mensaje de error si se cumple el condicional de que 
-la respuesta no es positiva.   
+/* Este archivo contiene la función para el envío del formulario de contacto. Importo la clave del archivo anterior y le paso la URL a donde la tiene que enviar. Luego exporta la 
+funcion asincrónica enviarConsulta con los datos nombre, email, mensaje. Espera la respuesta y el JSON se convierte a cadena de texto.  
+Se agrega una condición en la que si la respuesta del fetch NO es positiva, o NO success lance un error. 
 */
 
 const URL_ENVIO = "https://api.web3forms.com/submit";

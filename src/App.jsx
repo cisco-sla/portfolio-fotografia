@@ -1,3 +1,4 @@
+/* El Navbar lo colo fuera del contenedor de routes porque es un componente fijo, se muestra en todas las pantallas*/
 import { Routes, Route } from "react-router";
 import Navbar from "./components/Navbar.jsx";
 import Inicio from "./pages/Inicio.jsx";

@@ -1,3 +1,5 @@
+//Reutilizo FotoCard – Importo la informacion de las fotos del archivo anterior y con un map armo el nuevo array que le paso a FotoCard
+
 import FotoCard from "../components/FotoCard.jsx";
 import { fotos } from "../data/fotos.js";
 import "./Portfolio.css";

@@ -1,13 +1,13 @@
-// Importa todas las fotos de la carpeta de una sola vez.
-// Devuelve un objeto: { "../assets/photos/DSC_7130.jpg": "/ruta/final.jpg", ... }
+/* Este archivo contiene mi Array de Objetos que son cada foto guardada en ../assets/fotos/. Import.meta.glob es una función de Vite que trae todas las fotos de 
+una sola vez, para no tener que hacer 19 imports. El eager hace que se carguen las imágenes inmediatamente*/
 const imagenes = import.meta.glob("../assets/photos/*.jpg", {
-  query: "?url",
   import: "default",
   eager: true,
 });
 
-// Busca una foto por nombre de archivo. Si el nombre está mal escrito,
-// avisa con un error claro en vez de dejar la imagen vacía en silencio.
+/* La función que busca las imagenes. Antes de exportar le agregue un condicional para que avise si hay errores con la ruta o los archivos. Esto para que haya 
+un aviso en vez de dejar la imagen vacía sin que diga nada.*/
+
 function img(nombre) {
   const ruta = imagenes[`../assets/photos/${nombre}`];
   if (!ruta) {
